@@ -1,0 +1,51 @@
+title: Tumbot
+url: "https://tumble1999.github.io/tumbot-webpanel"
+repository: tumble1999/tumbot-webpanel
+
+permalink: pretty
+production: true
+safe: true
+
+date-format: "%e %b %Y"
+
+plugins:
+  - jekyll-mentions
+  - jemoji
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+kramdown:
+  input: GFM
+  auto_ids: false
+
+collections:
+  root:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: root
+    values:
+      permalink: /:title
+
+exclude:
+  - src
+  - "*.sh"
+  - package.json
+  - webpack.config.js
+  - yarn-error.log
+  - yarn.lock
+  - node_modules
+  - Gemfile
+  - Gemfile.lock

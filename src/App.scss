@@ -1,0 +1,149 @@
+$tumble-yellow: #ffc107;
+$tumble-blue: #123;
+
+* {
+  font-family: sans-serif;
+}
+
+a {
+  &,
+  &:visited,
+  &:hover {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+body {
+  color: white;
+  background-color: black;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+%round {
+  border-radius: 50%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  .round {
+    @extend %round;
+  }
+}
+
+.center {
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+#dashboard {
+  &.modules {
+    display: grid;
+    grid-template-areas:
+      "server nav"
+      "modules settings";
+    grid-template-rows: 56px auto;
+    grid-template-columns: 300px auto;
+  }
+}
+
+#modules {
+  background-color: $tumble-blue;
+}
+
+#server,
+#nav {
+  background-color: $tumble-yellow;
+  color: black;
+}
+
+#server,
+#nav {
+  img {
+    @extend %round;
+    height: 48px;
+    width: auto;
+    justify-self: center;
+  }
+}
+
+#server {
+  grid-area: server;
+  @extend .center;
+  grid-template-rows: 56px;
+  grid-template-columns: 56px auto 48px;
+  text-align: left;
+  grid-auto-flow: column;
+  justify-items: flex-start;
+  * {
+    height: 100%;
+  }
+  > * {
+    height: 24px;
+  }
+  i {
+    @extend .center;
+    justify-self: center;
+  }
+}
+#nav {
+  grid-area: nav;
+  display: grid;
+  grid-template-areas: "modules users login";
+  grid-template-columns: auto auto 56px;
+  & > * {
+    @extend .center;
+  }
+}
+#modules {
+  grid-area: modules;
+  //   display: grid;
+  & > * {
+    @extend .center;
+    height: 75px;
+    &:hover {
+      background-color: #223344;
+    }
+    &.active {
+      background-color: $tumble-yellow;
+      color: black;
+    }
+  }
+}
+#main {
+  grid-area: settings;
+
+  .panel {
+    background-color: #123;
+    margin: 10px;
+    padding: 10px;
+    &.page-header {
+      display: grid;
+      grid-template-columns: auto 56px;
+      grid-template-areas:
+        "title json"
+        "description description";
+      h1 {
+        grid-area: title;
+      }
+      a,
+      button {
+        grid-area: json;
+      }
+      p {
+        grid-area: description;
+      }
+      @extend .center;
+    }
+  }
+}
