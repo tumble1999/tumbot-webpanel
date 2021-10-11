@@ -1,9 +1,10 @@
 const path = require('path'), MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+	mode: "production",
 	output: {
 		path: path.join(__dirname, "assets"),
-		filename: "js/tumbot.min.js"
+		filename: "js/tumbot.min.js",
 	},
 	devServer: {
 		port: 4000
