@@ -6,14 +6,14 @@ export function App() {
 	return (
 		<div id="dashboard" class="modules">
 			<div id="server">
-				<img src="/assets/img/tumbot.svg" alt="tumblot_logo" />
+				<img src="assets/img/tumbot.svg" alt="tumblot_logo" />
 				Tumbot
 				<i>V</i>
 			</div>
 			<div id="nav">
 				<a href="#">Modules</a>
 				<a href="#">Users</a>
-				<img src="/assets/img/tumbot.svg" alt="tumblot_logo" />
+				<img src="assets/img/tumbot.svg" alt="tumblot_logo" />
 			</div>
 			<div id="modules">
 				<a href="#">Module 1</a>
