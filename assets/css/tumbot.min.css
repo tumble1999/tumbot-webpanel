@@ -1,1 +1,219 @@
-*{font-family:sans-serif}h1{margin:0}h2{margin:0}h3{margin:0}h4{margin:0}h5{margin:0}h6{margin:0}.bg-yellow,#nav,.bg-yellow-hover,.list>*.active,#nav>a,#header,#header #server-list>*,button,button:visited,button:focus,.btn,.btn:visited,.btn:focus{background-color:#ffc107;color:#000}.bg-blue,#main .panel,.bg-blue-hover,.list>*,button.blue,button.blue:visited,button.blue:focus,.blue.btn{background-color:#123;color:#fff}.bg-dark-yellow,#nav>a.active,.bg-yellow-hover:hover,.list>.active:hover,#nav>a:hover,#header:hover,#header #server-list>:hover,button:hover,button:hover:visited,button:hover:focus,.btn:hover{background-color:#d6a206;color:#000}.bg-light-blue,.bg-blue-hover:hover,.list>:hover,button.blue:hover,.blue.btn:hover{background-color:#14273b;color:#fff}a,a:visited,a:hover,a:focus{color:#ffc107;font-weight:bold;text-decoration:none}button,button:visited,button:focus,.btn,.btn:visited,.btn:focus{padding:16px}body{color:#fff;background-color:#000}html,body,#app{height:100%;margin:0;padding:0}#header img,#server-list>* img,#nav img,img .round{border-radius:50%}img{width:100%;height:auto}.center,#main .panel.page-header,.list>*,#nav>*,#header i,#header #server-list>* i,#header,#header #server-list>*{text-align:center;display:grid;place-items:center}#dashboard{display:grid;grid-template-rows:56px auto;grid-template-areas:"header" "content"}#dashboard.modules,#dashboard.users{grid-template-columns:300px auto}#dashboard.modules{grid-template-areas:"header nav" "modules content"}#nav a,#nav a:visited{color:inherit;font-weight:bold}#header img,#server-list>* img,#nav img{height:48px;width:auto;place-self:center}#header{grid-area:header;font-weight:bold;font-size:1.17em}#header #server-list{position:fixed;top:60px;left:0;z-index:10;width:300px;display:none}#header>*{height:24px}#header *{height:100%}#header,#header #server-list>*{grid-template-rows:56px;grid-template-columns:56px auto auto;text-align:left;grid-auto-flow:column;place-items:center;height:56px}#header i,#header #server-list>* i{justify-self:center}#header:focus-within #server-list{display:block}#nav{grid-area:nav;display:grid;grid-template-areas:"modules users login";grid-template-columns:auto auto 56px}.list{grid-area:modules}.list>*{height:75px}#main{grid-area:content}#main .panel{margin:10px;padding:10px;display:none;grid-template-columns:auto 56px 10px;grid-template-areas:"title json" "description description"}#main .panel h1{grid-area:title}#main .panel h2{grid-area:title}#main .panel h3{grid-area:title}#main .panel h4{grid-area:title}#main .panel h5{grid-area:title}#main .panel h6{grid-area:title}#main .panel button{grid-area:json}#main .panel p{grid-area:description}#main .panel.page-header{display:grid}#main .panel.error{background-color:#f44336;color:#fff}#main .panel.active{display:grid}
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*********************************************************************************************************/
+* {
+  font-family: sans-serif;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+h4 {
+  margin: 0;
+}
+
+h5 {
+  margin: 0;
+}
+
+h6 {
+  margin: 0;
+}
+
+.bg-yellow, #nav, .bg-yellow-hover, .list > *.active, #nav > a, #header,
+#header #server-list > *, button, button:visited, button:focus,
+.btn,
+.btn:visited,
+.btn:focus {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.bg-blue, #main .panel, .bg-blue-hover, .list > *, button.blue, button.blue:visited, button.blue:focus,
+.blue.btn {
+  background-color: #112233;
+  color: #fff;
+}
+
+.bg-dark-yellow, #nav > a.active, .bg-yellow-hover:hover, .list > .active:hover, #nav > a:hover, #header:hover,
+#header #server-list > :hover, button:hover, button:hover:visited, button:hover:focus,
+.btn:hover {
+  background-color: #d6a206;
+  color: #000;
+}
+
+.bg-light-blue, .bg-blue-hover:hover, .list > :hover, button.blue:hover,
+.blue.btn:hover {
+  background-color: #14273b;
+  color: #fff;
+}
+
+a, a:visited, a:hover, a:focus {
+  color: #ffc107;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+button, button:visited, button:focus,
+.btn,
+.btn:visited,
+.btn:focus {
+  padding: 16px;
+}
+body {
+  color: #fff;
+  background-color: #000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#header img,
+#server-list > * img,
+#nav img, img .round {
+  border-radius: 50%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+.center, #main .panel.page-header, .list > *, #nav > *, #header i,
+#header #server-list > * i, #header,
+#header #server-list > * {
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+#dashboard {
+  display: grid;
+  grid-template-rows: 56px auto;
+  grid-template-areas: "header" "content";
+}
+#dashboard.modules, #dashboard.users {
+  grid-template-columns: 300px auto;
+}
+#dashboard.modules {
+  grid-template-areas: "header nav" "modules content";
+}
+
+#nav a,
+#nav a:visited {
+  color: inherit;
+  font-weight: bold;
+}
+
+#header img,
+#server-list > * img,
+#nav img {
+  height: 48px;
+  width: auto;
+  place-self: center;
+}
+
+#header {
+  grid-area: header;
+  font-weight: bold;
+  font-size: 1.17em;
+}
+#header #server-list {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 10;
+  width: 300px;
+  display: none;
+}
+#header > * {
+  height: 24px;
+}
+#header * {
+  height: 100%;
+}
+#header,
+#header #server-list > * {
+  grid-template-rows: 56px;
+  grid-template-columns: 56px auto auto;
+  text-align: left;
+  grid-auto-flow: column;
+  place-items: center;
+  height: 56px;
+}
+#header i,
+#header #server-list > * i {
+  justify-self: center;
+}
+#header:focus-within #server-list {
+  display: block;
+}
+
+#nav {
+  grid-area: nav;
+  display: grid;
+  grid-template-areas: "modules users login";
+  grid-template-columns: auto auto 56px;
+}
+.list {
+  grid-area: modules;
+}
+.list > * {
+  height: 75px;
+}
+#main {
+  grid-area: content;
+}
+#main .panel {
+  margin: 10px;
+  padding: 10px;
+  display: none;
+  grid-template-columns: auto 56px 10px;
+  grid-template-areas: "title json" "description description";
+}
+#main .panel h1 {
+  grid-area: title;
+}
+#main .panel h2 {
+  grid-area: title;
+}
+#main .panel h3 {
+  grid-area: title;
+}
+#main .panel h4 {
+  grid-area: title;
+}
+#main .panel h5 {
+  grid-area: title;
+}
+#main .panel h6 {
+  grid-area: title;
+}
+#main .panel button {
+  grid-area: json;
+}
+#main .panel p {
+  grid-area: description;
+}
+#main .panel.page-header {
+  display: grid;
+}
+#main .panel.error {
+  background-color: #f44336;
+  color: #fff;
+}
+#main .panel.active {
+  display: grid;
+}

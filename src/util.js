@@ -7,3 +7,7 @@ export function createToggle(thingsToToggle, cb = el => { }) {
 	};
 }
 
+
+export function Toggler({target,onToggle}) {
+	
+}

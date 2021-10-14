@@ -1,8 +1,11 @@
 //require('file-loader?name=[name].[ext]!./index.html');
 import React from 'react';
 import ReactDOM from "react-dom";
-import { App } from "./App";
-import './App.scss';
+import App from "./App";
+import './index.scss';
 
-const appElement = document.getElementById('app');
-ReactDOM.render(<App />, appElement);
+ReactDOM.render(
+<React.StrictMode>
+	<App />
+</React.StrictMode>
+, document.getElementById('app'));
