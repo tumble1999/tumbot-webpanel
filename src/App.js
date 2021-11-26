@@ -7,8 +7,8 @@ function App() {
 	let {server,module}= getParams({server,module});
 
 	return <div>
-		<ServerList />
-		<ModuleList />
+		<ServerList serverId={server||"all"}/>
+		<ModuleList serverId={server||"all"} moduleId={module||"core"} />
 		<ModuleEditor serverId={server||"all"} moduleId={module||"core"} />
 	</div>;
 }

@@ -41,12 +41,12 @@ export function AutoFormField({ name, value, onChange }) {
 
 export function AutoForm({obj,onChange}) {
 	return Object.keys(obj).map(name =>
-		<div>
+		<div key="name">
 			<label htmlFor={name}>{name}</label>
 			<AutoFormField
 				name={name}
 				value={obj[name]}
 				onChange={onChange}
 			/>
-			</div>)
+		</div>)
 }
