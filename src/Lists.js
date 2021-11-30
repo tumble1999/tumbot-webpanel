@@ -22,8 +22,19 @@ export function ServerList({serverId}) {
 	</div>;
 }
 
+export function ViewList({serverId,viewId}) {
+	return <div>
+		<h1>View</h1>
+		<ul>
+			<li><a href={"?server="+serverId+"&modules"} className={viewId=="modules"?"active":""}>Modules</a></li>
+			<li><a href={"?server="+serverId+"&users"} className={viewId=="users"?"active":""}>Users</a></li>
+		</ul>
+	</div>
+}
+
 
 export function ModuleList({serverId,moduleId}) {
+	if(!moduleId) return;
 	let [modules, updateModules] = useState([]);
 	useEffect(()=>{
 		socket.on("updateModules", updateModules);

@@ -1,17 +1,17 @@
 import React from 'react';
 import Editor, { DiffEditor } from "@monaco-editor/react";
 
-export function AutoFormField({ name, value, onChange }) {
+export function AutoFormField({ name, value: defaultValue, onChange }) {
 	let type;
-	switch (typeof value) {
+	switch (typeof defaultValue) {
 		case "number":
 			type = "number";
 			break;
 		case "string":
-			if (value.includes("\n")) {
+			if (defaultValue.includes("\n")) {
 				return <textarea
 					name={name}
-					defaultValue={value}
+					defaultValue={defaultValue}
 					placeholder={name}
 					onChange={onChange}
 				/>;
@@ -19,13 +19,19 @@ export function AutoFormField({ name, value, onChange }) {
 				type = "text";
 				break;
 			}
+		case "array":
+			return <ArrayField
+				name={name}
+				defaultValue={defaultValue}
+				onChange={onChange}
+			/>
 		default:
 			return <Editor
 				name={name}
 				height="30vh"
 				theme="vs-dark"
 				defaultLanguage="json"
-				defaultValue={JSON.stringify(value, null, 2)}
+				defaultValue={JSON.stringify(defaultValue, null, 2)}
 				onChange={onChange}
 			/>;
 	}
@@ -33,20 +39,8 @@ export function AutoFormField({ name, value, onChange }) {
 	return <input
 	type={type}
 	name={name}
-	defaultValue={value}
+	defaultValue={defaultValue}
 	placeholder={name}
 	onChange={onChange}
 	/>;
-}
-
-export function AutoForm({obj,onChange}) {
-	return Object.keys(obj).map(name =>
-		<div key="name">
-			<label htmlFor={name}>{name}</label>
-			<AutoFormField
-				name={name}
-				value={obj[name]}
-				onChange={onChange}
-			/>
-		</div>)
 }
