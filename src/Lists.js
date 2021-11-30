@@ -10,12 +10,17 @@ export function ServerList({serverId}) {
 		socket.emit("getServers");
 	},[socket])
 
+	console.log("Servers:",servers);
+
 	return <div>
 		<h1>Servers</h1>
-		<ul>
-			{servers.map((server, i) =>
-				<li key={"server-" + i}>
-					<a href={`?server=${server}`} className={server==serverId?"active":""} >{server}</a>
+		<ul class="item-list">
+			{servers.map((server) =>
+				<li key={"server_" + server.id}>
+					<a href={`?server=${server.id}`} className={server.id==serverId?"active":""} >
+						<img src={server.icon} alt="" />
+						{server.name}
+					</a>
 				</li>
 			)}
 		</ul>
