@@ -16,8 +16,8 @@ export function ServerList({serverId}) {
 		<h1>Servers</h1>
 		<ul>
 			{servers.map((server) =>
-				<li key={"server_" + server.id}>
-					<a href={`?server=${server.id}`} className={server.id==serverId?"active":""} >
+				<li key={"server_" + server.serverId}>
+					<a href={`?server=${server.serverId}`} className={server.serverId==serverId?"active":""} >
 						<img src={server.icon} alt="" />
 						{server.name}
 					</a>
@@ -43,15 +43,17 @@ export function ModuleList({serverId,moduleId}) {
 	let [modules, updateModules] = useState([]);
 	useEffect(()=>{
 		socket.on("updateModules", updateModules);
-		socket.emit("getModules");
+		socket.emit("getModules",{serverId});
 	},[socket])
+
+	console.log("Modules:",modules);
 
 	return <div>
 		<h1>Modules</h1>
 		<ul>
 			{modules.map((module, i) =>
 				<li key={"module-" + i}>
-					<a href={`?server=${serverId}&module=${module}`} className={module==moduleId?"active":""}>{module}</a>
+					<a href={`?server=${serverId}&module=${module.moduleId}`} className={module.moduleId==moduleId?"active":""}>{module.moduleId}</a>
 				</li>
 			)}
 		</ul>
