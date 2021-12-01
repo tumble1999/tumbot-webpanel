@@ -10,13 +10,12 @@ function App() {
 
 	console.log({server,module,users});
 
-	let viewId = void 0 == users?"modules":"users";
-	let view;
+	let view,viewId = void 0 == users?"modules":"users";
 
 	if(void 0 == users) {
 		view = [
-			<ModuleList serverId={server} moduleId={module} />,
-			<ModuleEditor serverId={server} moduleId={module} />
+			<ModuleList key="module-list" serverId={server} moduleId={module} />,
+			<ModuleEditor key="module-editor" serverId={server} moduleId={module} />
 		]
 	} else {
 		view = <PermissionEditor serverId={server} />
@@ -24,7 +23,7 @@ function App() {
 
 	return <div>
 		<ServerList serverId={server}/>
-		<ViewList serverId={server} viewId={viewId} />
+		{/* <ViewList serverId={server} viewId={viewId} /> */}
 		{view}
 	</div>;
 }

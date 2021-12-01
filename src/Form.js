@@ -19,12 +19,6 @@ export function AutoFormField({ name, value: defaultValue, onChange }) {
 				type = "text";
 				break;
 			}
-		case "array":
-			return <ArrayField
-				name={name}
-				defaultValue={defaultValue}
-				onChange={onChange}
-			/>
 		default:
 			return <Editor
 				name={name}

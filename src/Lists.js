@@ -14,7 +14,7 @@ export function ServerList({serverId}) {
 
 	return <div>
 		<h1>Servers</h1>
-		<ul class="item-list">
+		<ul>
 			{servers.map((server) =>
 				<li key={"server_" + server.id}>
 					<a href={`?server=${server.id}`} className={server.id==serverId?"active":""} >
