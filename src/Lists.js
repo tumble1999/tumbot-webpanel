@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from "react";
 import { socket } from "./bot";
 
-export function ServerList({serverId}) {
+export function ServerList({stage,serverId}) {
 	let [servers, updateServers] = useState([]);
 
 	useEffect(()=>{
@@ -17,7 +17,7 @@ export function ServerList({serverId}) {
 		<ul>
 			{servers.map((server) =>
 				<li key={"server_" + server.serverId}>
-					<a href={`?server=${server.serverId}`} className={server.serverId==serverId?"active":""} >
+					<a href={`?${stage!=="stable"?"stage="+stage+"&":""}server=${server.serverId}`} className={server.serverId==serverId?"active":""} >
 						<img src={server.icon} alt="" />
 						{server.name}
 					</a>
@@ -27,18 +27,18 @@ export function ServerList({serverId}) {
 	</div>;
 }
 
-export function ViewList({serverId,viewId}) {
+export function ViewList({stage,serverId,viewId}) {
 	return <div>
 		<h1>View</h1>
 		<ul>
-			<li><a href={"?server="+serverId+"&modules"} className={viewId=="modules"?"active":""}>Modules</a></li>
-			<li><a href={"?server="+serverId+"&users"} className={viewId=="users"?"active":""}>Users</a></li>
+			<li><a href={"?"+(stage!=="stable"?"stage="+stage+"&":"")+"server="+serverId+"&modules"} className={viewId=="modules"?"active":""}>Modules</a></li>
+			<li><a href={"?"+(stage!=="stable"?"stage="+stage+"&":"")+"server="+serverId+"&users"} className={viewId=="users"?"active":""}>Users</a></li>
 		</ul>
 	</div>
 }
 
 
-export function ModuleList({serverId,moduleId}) {
+export function ModuleList({stage,serverId,moduleId}) {
 	if(!moduleId) return;
 	let [modules, updateModules] = useState([]);
 	useEffect(()=>{
@@ -53,7 +53,7 @@ export function ModuleList({serverId,moduleId}) {
 		<ul>
 			{modules.map((module, i) =>
 				<li key={"module-" + i}>
-					<a href={`?server=${serverId}&module=${module.moduleId}`} className={module.moduleId==moduleId?"active":""}>{module.moduleId}</a>
+					<a href={`?${stage!=="stable"?"stage="+stage+"&":""}server=${serverId}&module=${module.moduleId}`} className={module.moduleId==moduleId?"active":""}>{module.moduleId}</a>
 				</li>
 			)}
 		</ul>

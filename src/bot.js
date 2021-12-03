@@ -1,14 +1,15 @@
-import {io} from 'socket.io-client'
-let server = "localhost:3000",
-socket = io("localhost:3000")
+import { io } from 'socket.io-client';
+let socket;
+
+export function setupConnection(ip) {
+	socket = io(ip);
+
+	socket.on("connect", () => {
+		console.log("Connected to " + ip);
+	});
+
+	socket.on("log", console.log);
+}
 
 
-socket.on("connect",()=>{
-	console.log("Connected to " + server);
-})
-
-socket.on("log",console.log)
-
-
-
-export {socket};
+export { socket };
