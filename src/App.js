@@ -12,10 +12,10 @@ function App() {
 			setupConnection("http://localhost:3000")
 		break;
 		case "unstable":
-			setupConnection("https://tumbot-unstable.heroku.com")
+			setupConnection("https://tumbot-unstable.herokuapp.com")
 		break;
 		case "stable":
-			setupConnection("https://tumbot-stable.heroku.com")
+			setupConnection("https://tumbot-stable.herokuapp.com")
 		break;
 	}
 
