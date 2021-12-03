@@ -9,13 +9,13 @@ function App() {
 	if(!stage) stage = "unstable";
 	switch(stage) {
 		case "sandbox":
-			setupConnection("localhost:3000")
+			setupConnection("http://localhost:3000")
 		break;
 		case "unstable":
-			setupConnection("tumbot-unstable.heroku.com")
+			setupConnection("https://tumbot-unstable.heroku.com")
 		break;
 		case "stable":
-			setupConnection("tumbot-stable.heroku.com")
+			setupConnection("https://tumbot-stable.heroku.com")
 		break;
 	}
 
