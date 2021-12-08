@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ModuleList, ServerList, ViewList } from "./Lists";
 import { ModuleEditor, PermissionEditor } from "./Editor.js";
 import { getParams } from './params';
 import { setupConnection, socket, botUrl } from './bot';
+import { Login } from './Login';
+
+function login() {
+	location.href = botUrl + "/auth/discord";
+}
 
 function App() {
 	let { server, module, users, stage, code } = getParams({ server, module, users, stage, code });
 	if (!stage) stage = "unstable";
+
+
 
 	if (socket) {
 		if (code) {
@@ -15,7 +22,7 @@ function App() {
 		} else {
 			code = localStorage.getItem('tumbot-' + stage);
 			if (!code) {
-				location.href = botUrl + "/auth/discord";
+				login();
 			}
 		}
 	} else {
@@ -33,7 +40,16 @@ function App() {
 	}
 	if (code) {
 		useEffect(() => {
-			socket.emit("login", {code});
+			socket.on("refreshLogin",()=>{
+				login();
+			});
+
+			socket.emit("login", {code, serverId:server,moduleId:module});
+
+			let url = new URL(location.href);
+			url.searchParams.delete("code");
+			window.history.replaceState("", "", url)
+
 		}, [socket]);
 	}
 
@@ -55,6 +71,7 @@ function App() {
 	}
 
 	return <div>
+		<Login  stage={stage}/>
 		<ServerList stage={stage} serverId={server} />
 		{/* <ViewList  stage={stage} serverId={server} viewId={viewId} /> */}
 		{view}

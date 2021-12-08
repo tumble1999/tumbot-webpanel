@@ -9,7 +9,7 @@ function CommandsEditor({serverId,moduleId,moduleConfig}) {
 
 	useEffect(() => {
 		socket.on("updatePrefix", updatePrefix);
-		socket.emit("getPrefix",{serverId,moduleId});
+		// socket.emit("getPrefix",{serverId,moduleId});
 	}, [socket]);
 
 	commands = Object.keys(moduleConfig.commands).map(cmd=>({
@@ -44,7 +44,7 @@ export function ModuleEditor({serverId,moduleId}) {
 
 	useEffect(() => {
 		socket.on("updateModule", updateModule);
-		socket.emit("getModule", {serverId,moduleId});
+		// socket.emit("getModule", {serverId,moduleId});
 	}, [socket]);
 
 	return <div>
