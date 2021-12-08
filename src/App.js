@@ -6,7 +6,8 @@ import { setupConnection, socket, botUrl } from './bot';
 import { Login } from './Login';
 
 function login() {
-	location.href = botUrl + "/auth/discord";
+	console.log("LOGIN")
+	//location.href = botUrl + "/auth/discord";
 }
 
 function App() {
