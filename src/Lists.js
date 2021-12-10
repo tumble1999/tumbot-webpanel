@@ -9,7 +9,7 @@ export function ServerList({stage,serverId}) {
 	useEffect(()=>{
 		socket.on("updateServers", updateServers);
 		socket.on("updateInvite",updateInvite)
-		// socket.emit("getServers");
+		socket.emit("getServers");
 	},[socket])
 
 	console.log("Servers:",servers);
@@ -48,7 +48,7 @@ export function ModuleList({stage,serverId,moduleId}) {
 	let [modules, updateModules] = useState([]);
 	useEffect(()=>{
 		socket.on("updateModules", updateModules);
-		// socket.emit("getModules",{serverId});
+		socket.emit("getModules",{serverId});
 	},[socket])
 
 	console.log("Modules:",modules);

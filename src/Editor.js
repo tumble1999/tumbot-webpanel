@@ -43,8 +43,10 @@ export function ModuleEditor({serverId,moduleId}) {
 	let [moduleConfig, updateModule] = useState({});
 
 	useEffect(() => {
-		socket.on("updateModule", updateModule);
-		// socket.emit("getModule", {serverId,moduleId});
+		socket.on("updateModule", w=>{
+			updateModule(w)
+		});
+		socket.emit("getModule", {serverId,moduleId});
 	}, [socket]);
 
 	return <div>

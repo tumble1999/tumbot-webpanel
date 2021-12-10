@@ -9,9 +9,43 @@ function login() {
 	location.href = botUrl + "/auth/discord";
 }
 
+function Error({ code }) {
+	let messages = {
+		0: {
+			title: "Loading",
+			description: "Please wait, the page is loading."
+		},
+
+		200: {
+			title: "Success",
+			description: "Though if this message actually shows up then something is wrong."
+		},
+		404: {
+			title: "Page Not Found",
+			description: "The page was not found."
+		},
+		403: {
+			title: "Access Denied",
+			description: "You do not have access here."
+		},
+		999: {
+			title: "Unknown Error",
+			description: "There was an unknown error."
+		},
+	},
+		message = messages[code] || messages[999];
+
+	return <div>
+		<h1>{message.title}</h1>
+		<pre>Error: {code}</pre>
+		<p>{message.description}</p>
+	</div>;
+}
+
 function App() {
 	let { server, module, users, stage, code } = getParams({ server, module, users, stage, code });
 	if (!stage) stage = "unstable";
+	let [response, updateResponse] = useState(0);
 
 
 
@@ -40,15 +74,13 @@ function App() {
 	}
 	if (code) {
 		useEffect(() => {
-			socket.on("refreshLogin",()=>{
-				login();
-			});
-
-			socket.emit("login", {code, serverId:server,moduleId:module});
+			socket.on("refreshLogin", login);
+			socket.on("updateResponse", updateResponse);
+			socket.emit("login", { code, serverId: server, moduleId: module });
 
 			let url = new URL(location.href);
 			url.searchParams.delete("code");
-			window.history.replaceState("", "", url)
+			window.history.replaceState("", "", url);
 
 		}, [socket]);
 	}
@@ -59,19 +91,28 @@ function App() {
 
 	console.log({ server, module, users });
 
-	let view, viewId = void 0 == users ? "modules" : "users";
+	let view, viewId = void 0 == users ? "modules" : "users",
+		views = {
+			"modules": [
+				<ModuleList stage={stage} key="module-list" serverId={server} moduleId={module} />,
+				<ModuleEditor stage={stage} key="module-editor" serverId={server} moduleId={module} />
+			]
+		};
 
-	if (void 0 == users) {
-		view = [
-			<ModuleList stage={stage} key="module-list" serverId={server} moduleId={module} />,
-			<ModuleEditor stage={stage} key="module-editor" serverId={server} moduleId={module} />
-		];
-	} else {
-		//view = <PermissionEditor stage={stage} serverId={server} />;
+	switch (response) {
+		case 200:
+			view = views[viewId];
+			if (!view)
+				view = <p>Unknown View: {viewId}</p>;
+			break;
+
+		default:
+			view = <Error code={response} />;
+			break;
 	}
 
 	return <div>
-		<Login  stage={stage}/>
+		<Login stage={stage} />
 		<ServerList stage={stage} serverId={server} />
 		{/* <ViewList  stage={stage} serverId={server} viewId={viewId} /> */}
 		{view}
