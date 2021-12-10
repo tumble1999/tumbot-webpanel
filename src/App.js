@@ -9,6 +9,13 @@ function login() {
 	location.href = botUrl + "/auth/discord";
 }
 
+function HomePage() {
+	return <div>
+		<h1>Welcome</h1>
+		<p>Welcome to Tumbot, please choose a server from above.</p>
+	</div>
+}
+
 function Error({ code }) {
 	let messages = {
 		0: {
@@ -109,6 +116,10 @@ function App() {
 		default:
 			view = <Error code={response} />;
 			break;
+	}
+
+	if(response==403&&server=="all") {
+		view = <HomePage/>
 	}
 
 	return <div>
