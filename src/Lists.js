@@ -3,10 +3,12 @@ import { useState } from "react";
 import { socket } from "./bot";
 
 export function ServerList({stage,serverId}) {
-	let [servers, updateServers] = useState([]);
+	let [servers, updateServers] = useState([]),
+	[invite,updateInvite] = useState("");
 
 	useEffect(()=>{
 		socket.on("updateServers", updateServers);
+		socket.on("updateInvite",updateInvite)
 		// socket.emit("getServers");
 	},[socket])
 
@@ -23,6 +25,9 @@ export function ServerList({stage,serverId}) {
 					</a>
 				</li>
 			)}
+			<li>
+				<a target="_blank" href={invite}>Add Server</a>
+			</li>
 		</ul>
 	</div>;
 }
